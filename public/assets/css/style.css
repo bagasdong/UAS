@@ -1,0 +1,124 @@
+p {
+  color: #666;
+}
+
+.text-primary {
+  color: #f36a20;
+}
+
+.mi-btn-primary {
+  background-color: #f36a20;
+  border: 2px solid #fcef15;
+  font-weight: bold;
+  color: #fcef15;
+  box-shadow: 4px 6px 5px rgba(0, 0, 0, 0.25);
+}
+
+.mi-btn-primary:hover {
+  background-color: #fcef15;
+  border: 2px solid #fcef15;
+  color: #f36a20;
+}
+
+.mi-btn-secondary {
+  background-color: #fcef15;
+  border: 2px solid #f36a20;
+  font-weight: bold;
+  color: #f36a20;
+  box-shadow: 4px 6px 5px rgba(0, 0, 0, 0.25);
+}
+
+.mi-btn-secondary:hover {
+  background-color: #f36a20;
+  border: 2px solid #f36a20;
+  color: #fcef15;
+}
+
+.mi-btn-outlined {
+  background-color: white;
+  border: 1px solid #ccc;
+  font-weight: bold;
+  color: #f36a20;
+  box-shadow: 0px 2px 5px #f36a20;
+}
+
+.mi-btn-outlined:hover {
+  background-color: #f36a20;
+  box-shadow: 0px 2px 5px #fcef15;
+  border-color: #f36a20;
+  color: #fcef15;
+}
+
+.form-control:focus {
+  box-shadow: 0px 0px 5px #fcef15;
+}
+
+.mi-bg-primary {
+  background-color: #f36a20;
+}
+
+a {
+  color: black;
+}
+
+.login-page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #f36a20;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.login-page .logo {
+  width: 100%;
+  margin: auto;
+}
+
+nav {
+  position: fixed;
+  background-color: white;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  box-shadow: 0px -5px 5px rgba(0, 0, 0, 0.25);
+}
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: unset;
+  padding: unset;
+}
+nav ul li {
+  list-style: none;
+  margin: 0px 10px;
+}
+nav ul li a {
+  color: #666;
+}
+nav ul li a:hover {
+  color: #f36a20;
+}
+nav ul .active {
+  color: #f36a20;
+}
+
+.dashboard .user-greet {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.dashboard #totalCabang,
+.dashboard #totalKaryawan {
+  font-size: 3em;
+  font-weight: bold;
+  color: white;
+}
+.dashboard label {
+  color: white;
+}
+
+/*# sourceMappingURL=style.css.map */

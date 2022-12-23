@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Miyago Naknan Management</title>
+        <link
+            rel="stylesheet"
+            href="../../public/assets/css/bootstrap/bootstrap.min.css"
+        />
+        <link rel="stylesheet" href="../../public/assets/css/style.css" />
+        <script src="../../public/assets/js/bootstrap/bootstrap.min.js"></script>
+        <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    </head>
+    <body>
+        <main>
+            <div class="container dashboard my-5 pb-5">
+                <div class="row mb-3">
+                    <div class="user-greet">Hi, Anto</div>
+                    <p>22 September 2002</p>
+                </div>
+                <div class="row mb-3 justify-content-around">
+                    <div
+                        class="col-md-11 p-3 mi-bg-primary d-flex flex-column justify-content-center align-items-center shadow-sm rounded"
+                    >
+                        <h2 class="text-white">Horee!!</h2>
+                        <p class="text-white">
+                            Kamu sudah mengisi presensi hari ini.
+                        </p>
+                    </div>
+                </div>
+                <div class="row mb-3 justify-content-around">
+                    <div
+                        class="col-md-5 p-3 mi-bg-primary d-flex flex-column justify-content-center align-items-center shadow-sm rounded"
+                    >
+                        <label for="totalCabang">Hari Kamu Bekerja</label>
+                        <div id="totalCabang">3</div>
+                    </div>
+                    <div
+                        class="col-md-5 p-3 mi-bg-primary d-flex flex-column justify-content-center align-items-center shadow-sm rounded"
+                    >
+                        <label for="totalKaryawan">Hari Kamu Bolos</label>
+                        <div id="totalKaryawan">6</div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-12 mt-5 d-flex justify-content-around">
+                        <!-- Button trigger modal -->
+                        <button
+                            type="button"
+                            class="btn mi-btn-secondary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#inputModal"
+                        >
+                            Presensi di sini!
+                        </button>
+                        <!-- Modal -->
+                        <div
+                            class="modal fade"
+                            id="inputModal"
+                            tabindex="-1"
+                            aria-labelledby="inputModalLabel"
+                            aria-hidden="true"
+                        >
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form
+                                        action=""
+                                        enctype="multipart/form-data"
+                                    >
+                                        <div class="modal-header">
+                                            <h5
+                                                class="modal-title"
+                                                id="inputModalLabel"
+                                            >
+                                                Upload Bukti Presensi
+                                            </h5>
+                                            <button
+                                                type="button"
+                                                class="btn-close"
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close"
+                                            ></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="my-3">
+                                                <input
+                                                    type="file"
+                                                    class="form-control"
+                                                    accept="image/*"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button
+                                                type="button"
+                                                class="btn btn-secondary"
+                                                data-bs-dismiss="modal"
+                                            >
+                                                Close
+                                            </button>
+                                            <button
+                                                type="submit"
+                                                class="btn btn-primary"
+                                            >
+                                                Save changes
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row b-3">
+                    <div class="d-grid gap-3 col-md-6 mx-auto">
+                        <a href="" class="btn mi-btn-outlined btn-lg"
+                            >Presensi
+                            <span
+                                class="iconify"
+                                data-icon="bx:chevrons-right"
+                            ></span
+                        ></a>
+                        <a href="" class="btn mi-btn-outlined btn-lg"
+                            >Presensi
+                            <span
+                                class="iconify"
+                                data-icon="bx:chevrons-right"
+                            ></span
+                        ></a>
+                        <a href="" class="btn mi-btn-outlined btn-lg"
+                            >Presensi
+                            <span
+                                class="iconify"
+                                data-icon="bx:chevrons-right"
+                            ></span
+                        ></a>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-md-12 mt-5 d-flex justify-content-around">
+                        <a href="" class="btn mi-btn-outlined">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#" class="active"
+                        ><span
+                            class="iconify"
+                            data-icon="bx:home-alt"
+                            data-width="32"
+                            data-height="32"
+                        ></span
+                    ></a>
+                </li>
+                <li>
+                    <a href="#"
+                        ><span
+                            class="iconify"
+                            data-icon="akar-icons:money"
+                            data-width="32"
+                            data-height="32"
+                        ></span
+                    ></a>
+                </li>
+                <li>
+                    <a href="#"
+                        ><span
+                            class="iconify"
+                            data-icon="akar-icons:shipping-box-01"
+                            data-width="32"
+                            data-height="32"
+                        ></span
+                    ></a>
+                </li>
+                <li>
+                    <a href="#"
+                        ><span
+                            class="iconify"
+                            data-icon="clarity:employee-group-line"
+                            data-width="32"
+                            data-height="32"
+                        ></span
+                    ></a>
+                </li>
+                <li>
+                    <a href="#"
+                        ><span
+                            class="iconify"
+                            data-icon="ep:setting"
+                            data-width="32"
+                            data-height="32"
+                        ></span
+                    ></a>
+                </li>
+            </ul>
+        </nav>
+    </body>
+</html>
