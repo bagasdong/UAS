@@ -103,9 +103,23 @@
                                                     name="email" required autocomplete="email" value="{{old('email')}}">
                                             </div>
                                             <div class="form-group mb-3">
+                                                <label for="mobile">Mobile Number</label>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="basic-addon1">+62</span>
+                                                    <input type="number"
+                                                        class="form-control @error('number') is-invalid @enderror"
+                                                        id="mobile" name="mobile" required autocomplete="tel"
+                                                        value="{{old('mobile')}}" aria-describedby="basic-addon1">
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group mb-3">
                                                 <label for="cabang">Cabang</label>
-                                                <input id="cabang" type="number" class="form-control" name="cabang"
-                                                    value="{{ old('cabang') }}" required autocomplete="cabang" />
+                                                <select name="cabang" id="cabang" class="form-select" required>
+                                                    @foreach ($cabang as $item)
+                                                    <option value="{{$item->id}}">{{$item->alamat}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="form-group mb-3">
                                                 <label for="password">Password</label>

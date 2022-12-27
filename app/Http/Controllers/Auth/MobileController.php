@@ -53,7 +53,7 @@ class MobileController extends Controller
             $seconds = $daysInSecs + $hoursInSecs + $minsInSecs + $diff->s;
 
 
-            if ($seconds / 60 > 15) {
+            if ($seconds / 60 > 5) {
                 MobileVerification::where('mobile', '=', $request->mobile)->update([
                     'token' => Hash::make($otp),
                     'created_at' => Carbon::now()->timezone('Asia/Jakarta')->toDateTimeLocalString(),
@@ -87,7 +87,7 @@ class MobileController extends Controller
             $seconds = $daysInSecs + $hoursInSecs + $minsInSecs + $diff->s;
 
 
-            if ($seconds / 60 <= 15) {
+            if ($seconds / 60 <= 5) {
                 $message = "notAllowRequest";
             } else {
                 $message = "allowRequest";
@@ -108,20 +108,10 @@ class MobileController extends Controller
             User::where('mobile', '=', $request->mobile)->update([
                 'mobile_verified_at' => Carbon::now()->timezone('Asia/Jakarta')->toDateTimeLocalString()
             ]);
+            MobileVerification::where('mobile', '=', $request->mobile)->delete();
             return Redirect::to('admin');
         } else {
-            return Redirect::back()->with(['failed' => "Kode OTP Salah. Coba Lagi."]);
+            return Redirect::back()->withErrors(['failed' => "Kode OTP Salah. Coba Lagi."]);
         }
-    }
-
-
-    //mobile reset password
-    public function showOTPResetRequestForm()
-    {
-        return view('auth.passwords.mobile_reset');
-    }
-    public function showOTPResetForm()
-    {
-        return view('auth.passwords.mobile_reset');
     }
 }

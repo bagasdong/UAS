@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Verify Your Mobile Number') }}</div>
+                <div class="card-header">{{ __('OTP') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -25,7 +25,7 @@
                     @if ($message=="allowRequest")
                     <div class="alert alert-info" role="alert">
                         OTP code has been sent to your number, please enter the OTP in the field below.
-                        <form action="{{url('mobile/send-otp-to-verify')}}" method="POST">
+                        <form action="{{url('mobile/password/reset')}}" method="POST">
                             @csrf
                             <input type="number" value="{{$mobile}}" hidden name="mobile">
                             <input type="text" value="true" hidden name="resend">
@@ -35,7 +35,7 @@
                         </form>
                     </div>
                     @endif
-                    <form method="POST" action="{{url('mobile/OTP-check')}}">
+                    <form method="POST" action="{{url('mobile/password/reset-form')}}">
                         @csrf
 
                         <div class="form-group row mb-3">

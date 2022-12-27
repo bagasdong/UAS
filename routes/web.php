@@ -5,7 +5,7 @@ use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\Auth\MobileController;
 use App\Http\Controllers\PresensiController;
 use App\Http\Controllers\StokBarangController;
-use App\Http\Controllers\UploadController;
+use App\Http\Controllers\Auth\MobileResetPasswordController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,10 +21,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/password/mobile-reset', [MobileController::class, 'showOTPResetRequestForm']);
 Route::get('/home', function () {
     return redirect('/admin');
 });
+
+//mobile reset password
+Route::get('/mobile/password/reset', [MobileResetPasswordController::class, 'showOTPResetRequestForm']);
+Route::post('/mobile/password/reset', [MobileResetPasswordController::class, 'sendOTPReset']);
+Route::get('/mobile/password/reset/{id}', [MobileResetPasswordController::class, 'showOTPResetForm']);
+Route::post('/mobile/password/reset-form', [MobileResetPasswordController::class, 'checkOTPReset']);
+Route::post('/mobile/password/update', [MobileResetPasswordController::class, 'updatePassword']);
 
 Auth::routes(['verify' => true]);
 
@@ -40,6 +46,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('/admin/stok', StokBarangController::class);
     Route::resource('/admin/keuangan', KeuanganController::class);
 });
+
 Route::middleware(['auth', 'isUser'])->group(function () {
     Route::get('/user', [HomeController::class, 'index']);
     Route::resource('/user/presensi', PresensiController::class);

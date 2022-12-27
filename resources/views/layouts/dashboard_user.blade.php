@@ -168,7 +168,7 @@
                     <p>Cabang id : {{Auth::user()->cabang_id}}</p>
                     <p class="mb-0">Email : {{Auth::user()->email}}</p>
                     <p>
-                        <span class="bg-gradient-success text-white px-3 py-1">Mobile Number Verified</span>
+                        <span class="bg-gradient-success text-white px-3 py-1">Email Verified</span>
                     </p>
                     <p class="mb-0">Mobile Number : {{Auth::user()->mobile}}</p>
                     <p>

@@ -23,6 +23,8 @@ class PresensiController extends Controller
     public function index()
     {
         $presensis = Presensi::join('users', 'presensis.user_id', '=', 'users.id')->select('presensis.*', 'users.firstname', 'users.lastname')->orderBy('created_at', 'ASC')->get();
+        $year = Carbon::now()->timezone('Asia/Jakarta')->format('Y');
+        $month = Carbon::now()->timezone('Asia/Jakarta')->format('m');
         if (Auth::user()->role == "admin") {
             $data = [
                 'presensis' => $presensis,
@@ -30,19 +32,24 @@ class PresensiController extends Controller
             return view('pages.dashboard_admin_presensi', $data);
         } else {
             $today = Carbon::now()->timezone('Asia/Jakarta')->locale('en_US');
-            $first = Presensi::where('user_id', Auth::user()->id)->whereMonth('created_at', '=', '12')->whereYear('created_at', '=', '2022')->orderBy('tgl_presensi', 'ASC')->first();
-            $last = Presensi::where('user_id', Auth::user()->id)->whereMonth('created_at', '=', '12')->whereYear('created_at', '=', '2022')->orderBy('tgl_presensi', 'DESC')->first();
+            $first = Presensi::where('user_id', Auth::user()->id)->whereMonth('created_at', '=', $month)->whereYear('created_at', '=', $year)->orderBy('tgl_presensi', 'ASC')->first(); //tanggal pertama
+            $last = Presensi::where('user_id', Auth::user()->id)->whereMonth('created_at', '=', $month)->whereYear('created_at', '=', $year)->orderBy('tgl_presensi', 'DESC')->first(); ///tanggal terakhir
             $now = Presensi::where('user_id', Auth::user()->id)->whereDate('created_at', '=', Carbon::now()->timezone('Asia/Jakarta')->toDateString())->first();
             if ($first != null && $now != null) {
                 $between = date_create(Carbon::now()->timezone('Asia/Jakarta')->startOfMonth()->toDateString())->diff(date_create($now['created_at']->toDateString()));
                 $hari = ($between->y * 12 * 30) + ($between->m * 30) + ($between->d);
-                $kerja = Presensi::where('user_id', Auth::user()->id)->whereMonth('created_at', '=', '12')->whereYear('created_at', '=', '2022')->count();
+                $kerja = Presensi::where('user_id', Auth::user()->id)->whereMonth('created_at', '=', $month)->whereYear('created_at', '=', $year)->count();
                 $bolos = $hari - $kerja + 1;
-            } else {
+            } else if ($last != null) {
                 $between = date_create((Carbon::now()->timezone('Asia/Jakarta')->startOfMonth()->toDateString()))->diff(date_create($last['created_at']->toDateString()));
                 $hari = ($between->y * 12 * 30) + ($between->m * 30) + ($between->d);
-                $kerja = Presensi::where('user_id', Auth::user()->id)->whereMonth('created_at', '=', '12')->whereYear('created_at', '=', '2022')->count();
+                $kerja = Presensi::where('user_id', Auth::user()->id)->whereMonth('created_at', '=', $month)->whereYear('created_at', '=', $year)->count();
                 $bolos = $hari - $kerja + 2;
+            } else {
+                $between = date_create((Carbon::now()->timezone('Asia/Jakarta')->startOfMonth()->toDateString()))->diff(date_create((Carbon::now()->timezone('Asia/Jakarta')->toDateString())));
+                $hari = ($between->y * 12 * 30) + ($between->m * 30) + ($between->d);
+                $kerja = Presensi::where('user_id', Auth::user()->id)->whereMonth('created_at', '=', $month)->whereYear('created_at', '=', $year)->count();
+                $bolos = $hari - $kerja + 1;
             }
             // $bolos = $hari - $kerja == -1 ? 1 : $hari - $kerja + 1;
             $data = [
